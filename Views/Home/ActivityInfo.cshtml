@@ -1,0 +1,52 @@
+@model Activiti
+
+<div class="text-right">
+    <a href="/dashboard">Home</a> | <a href="/logout">Log Out</a>
+</div>
+<h1>@Model.Title</h1>
+<div class="text-right">
+    @{
+        if(@Model.UserId == ViewBag.OneUser.UserId)
+        {
+            <form action="/deleteactivity/@Model.ActivitiId" method="post">
+                <input type="submit" value="Delete" class="btn btn-danger">
+            </form>
+        }
+        else
+        {
+            bool IsAttending = false;
+            foreach (var y in @Model.ActivitiParticipant)
+            {
+                if (y.UserId == ViewBag.OneUser.UserId)
+                {
+                    IsAttending = true;
+                }
+            }
+            if(IsAttending == true)
+            {
+                <form action="/dontgotoactivity/@Model.ActivitiId" method="post">
+                    <input type="submit" value="Leave" class="btn btn-warning">
+                </form>
+            }
+            else
+            {
+                <form action="/gotoactivity/@Model.ActivitiId" method="post">
+                    <input type="submit" value="Join" class="btn btn-success">
+                </form>
+            }
+        }
+    }
+</div>
+<br>
+<h3>Event Coordinator: @Model.Coordinator.Name</h3>
+<br>
+<h3>Description:</h3>
+<p>@Model.Description</p>
+<br>
+<h3>Participants:</h3>
+@{
+    foreach(var g in @Model.ActivitiParticipant)
+    {
+        <p>@g.User.Name</p>
+    }
+}

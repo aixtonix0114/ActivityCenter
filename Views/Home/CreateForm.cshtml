@@ -1,0 +1,59 @@
+@model Activiti
+
+<h1>Dojo Activity Center</h1>
+<h2>Create an Activity</h2>
+<div class="text-right">
+    <a href="/dashboard">Home</a> | <a href="/logout">Log Out</a>
+</div>
+<br>
+<form action="createactivity" method="post">
+    <div class="row">
+        <div class="col-sm-3">
+            <label>Title</label>
+        </div>
+        <div class="col-sm-3">
+            <input asp-for="Title" class="form-control">
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="col-sm-3">
+            <label>Time</label>
+        </div>
+        <div class="col-sm-3">
+            <input asp-for="Time" class="form-control">
+            <span asp-validation-for="Time" class="text-danger"></span>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-sm-3">
+            <label>Date</label>
+        </div>
+        <div class="col-sm-3">
+            <input asp-for="Date" class="form-control">
+            <span asp-validation-for="Date" class="text-danger"></span>
+        </div>
+        <div class="col-sm-3">
+            <label>Duration</label>
+        </div>
+        <div class="col-sm-3">
+            <input asp-for="Duration" class="form-control">
+            <select asp-for="DurationUnit">
+                <option value="Hours">Hours</option>
+                <option value="Minutes">Minutes</option>
+                <option value="Days">Days</option>
+            </select>
+            <span asp-validation-for="Duration" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="com-sm-3">
+            <label>Description</label>
+        </div>
+        <div class="col-sm-12">
+            <textarea asp-for="Description" class="form-control"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+    </div>
+    <br>
+    <input type="submit" value="Create Activity" class="btn btn-primary">
+</form>

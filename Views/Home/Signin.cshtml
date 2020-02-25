@@ -1,0 +1,49 @@
+﻿@model User
+
+<h1>Welcome to the Dojo Activity Center</h1>
+<div class="row">
+    <div class="col-sm-6">
+        <form action="/register" method="post">
+            <h3>Register</h3>
+            <hr>
+            <div class="row">
+                <div class="col-sm-6">
+                    <label>Name</label>
+                </div>
+                <div class="col-sm-6">
+                    <input asp-for="Name" class="form-control">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <br>
+                <br>
+                <div class="col-sm-6">
+                    <label>Email</label>
+                </div>
+                <div class="col-sm-6">
+                    <input asp-for="Email" class="form-control">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <br>
+                <br>
+                <div class="col-sm-6">
+                    <label>Password</label>
+                </div>
+                <div class="col-sm-6">
+                    <input asp-for="Password" class="form-control">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <br>
+                <br>
+                <div class="col-sm-6">
+                    <label>PW Password</label>
+                </div>
+                <div class="col-sm-6">
+                    <input asp-for="PWConfirm" class="form-control">
+                    <span asp-validation-for="PWConfirm" class="text-danger"></span>
+                </div>
+            </div>
+            <input type="submit" value="Register" class="btn btn-primary">
+        </form>
+    </div>
+    <partial name="_LogPartial"/>
+</div>
